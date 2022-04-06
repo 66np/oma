@@ -11,6 +11,12 @@ SECTION .text
 global	_start
 
 _start:
+
+	call	read_from_file
+	call 	write_to_ter
+	call	exit
+
+read_from_file:
 	
 	mov	ecx, 0			; read only
 	mov	ebx, pname		; move opened FD into ebx
@@ -23,7 +29,10 @@ _start:
 	mov	ebx, [desc]		; move FD into ebx
 	mov	ecx, buffer		; read to buffer
 	mov	edx, len		; read len bytes 		
-	int	80h			; read len bytes to buffer from file	
+	int	80h			; read len bytes to buffer from file
+
+write_to_ter:
+	
 	mov	edx, eax		; storing count of read bytes into edx
 	mov	eax, 4			; invoke SYS_WRITE (kernel opcode 4)
 	mov	ebx, 1			; stdout, terminal
@@ -34,7 +43,7 @@ _start:
 	mov	ebx, [desc]		; FD
 	int	80h			; close the FD
 
-end:
+exit:
 	
 	mov	ebx, 0			; return 0 status on exit - "No errors"
 	mov	eax, 1			; invoke SYS_EXIT (kernel opcode 1)
