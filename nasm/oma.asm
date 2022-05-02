@@ -28,7 +28,7 @@ read_from_file:
 	mov	eax, 3			; invoke SYS_READ (kernel opcode 3) 
 	mov	ebx, [desc]		; move FD into ebx
 	mov	ecx, buffer		; read to buffer
-	mov	edx, len		; read len bytes 		
+	mov	edx, len		; read len bytes 
 	int	80h			; read len bytes to buffer from file
 
 write_to_ter:

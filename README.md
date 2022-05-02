@@ -1,7 +1,11 @@
+## progress
+
+completed - may add parts later.
+
 ## objective
 
-building low-level compiler of dummy language with .omma file extension using nasm x86 assembly.  
-
+building I/O application of files only named main.omma using nasm x86 assembly to read file and print contents to terminal.
+  
 ## instructions
 
 1. write your assembly program (.asm) and save it.                 
